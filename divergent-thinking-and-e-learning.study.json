@@ -1,0 +1,821 @@
+{
+  "components": {
+    "1": {
+      "id": "1",
+      "type": "lab.html.Form",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\r\n  <div class=\"w-l text-left\" style=\"display: block\">\r\n    <h2 class=\"text-center\">What alternative uses can you think of for a ${ parameters.item }?</h2>\r\n    <p class=\"text-center\">\r\n      Type your answer in the box below, then press <kbd>Enter</kbd> or tap on the <kbd>+</kbd>  button below to add another one.\r\n    </p>\r\n    <form id=\"${ parameters.item }-uses\"></form>\r\n  </div>\r\n</main>\r\n\r\n<footer class=\"content-vertical-center content-horizontal-right\">\r\n\t<button type=\"submit\" form=\"${ parameters.item }-uses\">Done &rarr;</button>\r\n</footer>",
+      "scrollTop": true,
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "svelte",
+          "message": "run",
+          "code": "new Answers({\r\n  target: document.getElementById(this.parameters.item + \"-uses\"),\r\n  props: {\r\n    name: this.parameters.item + '-uses',\r\n    labjs: this\r\n  }\r\n});"
+        }
+      ],
+      "title": "Item",
+      "_tab": "Scripts",
+      "timeline": [],
+      "timeout": "120000"
+    },
+    "2": {
+      "id": "2",
+      "type": "lab.flow.Loop",
+      "children": [
+        "5"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "item",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "soda can"
+          ],
+          [
+            "paperclip"
+          ],
+          [
+            "brick"
+          ],
+          [
+            "fork"
+          ]
+        ]
+      },
+      "sample": {
+        "mode": "draw-shuffle"
+      },
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Uses test"
+    },
+    "3": {
+      "id": "3",
+      "type": "lab.html.Form",
+      "content": "<main class=\"content-horizontal-center content-vertical-center\">\n\t<div class=\"w-l text-left\" style=\"display: block\">\n\n\t\t<h2 class=\"text-center\">Tell us a little about yourself</h2>\n\t\t<p class=\"text-center\">Before we get to the fun stuff, I would like to learn a bit more about you.</p>\n\n\t\t<form id=\"demography\">\n\t\t\t<table>\n\t\t\t\t<!-- Age -->\n\t\t\t\t<tr style=\"height: 50px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\tHow old are you, in years?\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<input name=\"age\" type=\"number\" required class=\"w-100\">\n          </td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- Gender -->\n\t\t\t\t<tr style=\"height: 100px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\tWhat is your gender?\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<select name=\"gender\" required class=\"w-100\">\n              <option value=\"\" selected>\n                -- Please click to select --\n              </option>\n              <option value=\"female\">Female</option>\n              <option value=\"male\">Male</option>            </select>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- Email -->\n\t\t\t\t<tr style=\"height: 100px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\tWhat is your email?\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<input name=\"email\" type=\"email\" class=\"w-100\">\n          </td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- Homeschooled -->\n\t\t\t\t<tr style=\"height: 100px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\t<label for=\"homeschooled\">Are you currently homeschooled?</label>\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<input id=\"homeschooled\" name=\"homeschooled\" type=\"checkbox\">\n          </td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- Grade -->\n\t\t\t\t<tr style=\"height: 100px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\tWhat grade are you in?\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<input name=\"grade\" type=\"number\">\n          </td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- Language -->\n\t\t\t\t<tr style=\"height: 100px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\tWhat language do you speak most at home?\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<select name=\"main-language\" required class=\"w-100\">\n              <option value=\"\" selected>\n                -- Please click to select --\n              </option>\n              <option value=\"english\">English</option>\n              <option value=\"filipino\">Filipino</option>           \n              <option value=\"other\">Other</option>           \n\t\t\t\t\t\t</select>\n          </td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- E learning -->\n\t\t\t\t<tr style=\"height: 50px\">\n\t\t\t\t\t<th>\n\t\t\t\t\t\t<label for=\"e-learning\">Do you currently use an online or screen-based platform for your learning?</label>\n\t\t\t\t\t</th>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<input id=\"e-learning\" name=\"e-learning\" type=\"checkbox\">\n          </td>\n\t\t\t\t</tr>\n\n\t\t\t\t<!-- Column balance -->\n\t\t\t\t<colgroup>\n\t\t\t\t\t<col style=\"width: 45%\">\n\t\t\t\t\t<col style=\"width: 65%\">\n\t\t\t\t</colgroup>\n\t\t\t</table>\n\t\t</form>\n\t</div>\n</main>\n\n<footer class=\"content-vertical-center content-horizontal-right\">\n\t<button type=\"submit\" form=\"demography\">Continue &rarr;</button>\n</footer>",
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "messageHandlers": [],
+      "title": "Demography form",
+      "files": [],
+      "_tab": "Content"
+    },
+    "5": {
+      "id": "5",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "11",
+        "1",
+        "8"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Trial"
+    },
+    "6": {
+      "id": "6",
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
+          "title": "Your E-learning Profile",
+          "content": ""
+        },
+        {
+          "required": true,
+          "type": "html",
+          "content": "<p class=\"font-weight-bold\" style=\"margin: 1rem 0 0.25rem\">\r\n  What subjects do you study online or on a screen, at least partially?\r\n</p>\r\n<p class=\"small text-muted hide-if-empty\" style=\"margin: 0.25rem 0\">\r\n  Choose as many as you like or type an option that's not listed here.\r\n</p>\r\n<select id=\"subjects\" name=\"subjects\" multiple required>\r\n  <option value=\"math\">Math</option>\r\n  <option value=\"science\">Science</option>\r\n  <option value=\"grammar\">Grammar</option>\r\n  <option value=\"literature\">Literature</option>\r\n  <option value=\"social-studies\">Social Studies</option>\r\n  <option value=\"foreign-language\">Foreign Language</option>\r\n  <option value=\"bible\">Bible</option>\r\n  <option value=\"physical-education\">Physical Education (yes, this is possible)</option>\r\n</select>"
+        },
+        {
+          "required": true,
+          "type": "radio",
+          "label": "In the past week, on average, approximately how much time PER DAY did you spend for non-study activities on a screen?",
+          "help": "e.g. social media, internet browsing, gaming",
+          "options": [
+            {
+              "label": "Less than 60 minutes per day",
+              "coding": "1"
+            },
+            {
+              "label": "1–2 hours per day",
+              "coding": "2"
+            },
+            {
+              "label": "2–3 hours per day",
+              "coding": "3"
+            },
+            {
+              "label": "3–4 hours per day",
+              "coding": "4"
+            },
+            {
+              "label": "4–5 hours per day",
+              "coding": "5"
+            },
+            {
+              "label": "More than 5 hours per day",
+              "coding": "6"
+            }
+          ]
+        },
+        {
+          "required": true,
+          "type": "text",
+          "content": "For the questions below, answer with what you have used in the past week or so."
+        },
+        {
+          "required": true,
+          "type": "html",
+          "content": "<p class=\"font-weight-bold\" style=\"margin: 1rem 0 0.25rem\">\r\n  What platforms do you use for your learning?\r\n</p>\r\n<p class=\"small text-muted hide-if-empty\" style=\"margin: 0.25rem 0\">\r\n  You can add an option if it's not here.\r\n</p>\r\n<select id=\"operating-systems\" name=\"operating-systems\" multiple required>\r\n  <option value=\"windows\">Windows</option>\r\n  <option value=\"macos\">MacOS</option>\r\n  <option value=\"android\">Android</option>\r\n  <option value=\"ios\">iOS</option>\r\n  <option value=\"chromeos\">ChromeOS (Chromebooks only)</option>\r\n</select>"
+        },
+        {
+          "required": true,
+          "type": "html",
+          "content": "<p class=\"font-weight-bold\" style=\"margin: 1rem 0 0.25rem\">\r\n  What apps do you use for your learning?\r\n</p>\r\n<p class=\"small text-muted hide-if-empty\" style=\"margin: 0.25rem 0\">\r\n</p>\r\n<select id=\"apps-list\" name=\"apps-list\" multiple required>\r\n  <optgroup label=\"Resources\">\r\n    <option value=\"Khan Academy\">Khan Academy</option>\r\n    <option value=\"Saylor Academy\">Saylor Academy</option>\r\n    <option value=\"CK-12\">CK-12</option>\r\n    <option value=\"LibreTexts\">LibreTexts</option>\r\n  </optgroup>\r\n  <optgroup label=\"Learning Management Systems\">\r\n    <option value=\"Quipper\">Quipper</option>\r\n    <option value=\"Google Classroom\">Google Classroom</option>\r\n    <option value=\"Coursera\">Coursera</option>\r\n    <option value=\"Udemy\">Udemy</option>\r\n    <option value=\"Udacity\">Udacity</option>\r\n    <option value=\"edX\">edX</option>\r\n    <option value=\"Canvas\">Canvas</option>\r\n  </optgroup>\r\n  <optgroup label=\"Curriculum\">\r\n    <option value=\"MobyMax\">MobyMax</option>\r\n    <option value=\"AOP Ignitia\">AOP Ignitia</option>\r\n    <option value=\"BJU DLO\">BJU DLO</option>\r\n  </optgroup>\r\n  <optgroup label=\"Tools\">\r\n    <option value=\"Quizlet\">Quizlet</option>\r\n    <option value=\"Anki\">Anki</option>\r\n    <option value=\"Notion\">Notion</option>\r\n    <option value=\"Generic Notes\">Note taking software</option>\r\n  </optgroup>\r\n  <optgroup label=\"E-reading\">\r\n    <option value=\"Kindle\">Kindle</option>\r\n    <option value=\"Apple Books\">Apple Books</option>\r\n  </optgroup>\r\n  <optgroup label=\"Video\">\r\n    <option value=\"Zoom\">Zoom</option>\r\n    <option value=\"Google Meet\">Google Meet</option>\r\n    <option value=\"Skype\">Skype</option>\r\n  </optgroup>\r\n</select>"
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "Continue →",
+      "submitButtonPosition": "right",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "tomselectize",
+          "message": "run",
+          "code": "new TomSelect(`#subjects`, {\r\n  create: true\r\n});\r\n\r\nnew TomSelect(`#apps-list`, {\r\n  create: true,\r\n  maxItems: 5\r\n});\r\n\r\nnew TomSelect(`#operating-systems`, {\r\n  create: true\r\n});"
+        }
+      ],
+      "title": "E-learning",
+      "_tab": "Content",
+      "tardy": true,
+      "skipCondition": "${ !state['e-learning'] }"
+    },
+    "7": {
+      "id": "7",
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
+          "title": "Hello!",
+          "content": "I'm Elijah, a 12th-grade homeschooled student who's curious about how homeschoolers learn online and how this affects their creativity. "
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "Tell me more →",
+      "submitButtonPosition": "right",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Hello"
+    },
+    "8": {
+      "id": "8",
+      "type": "lab.html.Form",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\n  <div class=\"w-l text-left\" style=\"display: block\">\n    <h2 class=\"text-center\">Rank your choices</h2>\n    <p class=\"text-center\">Check the top two answers you think were the most creative.</p>\n    <form id=\"page-form\"></form>\n  </div>\n</main>\n\n<footer class=\"content-vertical-center content-horizontal-right\">\n\t<button type=\"submit\" form=\"page-form\">Next &rarr;</button>\n</footer>",
+      "scrollTop": true,
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "ranking",
+          "message": "run",
+          "code": "new Ranking({\r\n  target: document.getElementById(\"page-form\"),\r\n  props: {\r\n    name: this.parameters.item + '-uses-ranking',\r\n    labjs: this,\r\n    items: this.state[this.parameters.item + '-uses-answers']\r\n  }\r\n});\r\ndebugger;"
+        }
+      ],
+      "title": "Ranking",
+      "_tab": "Scripts"
+    },
+    "9": {
+      "id": "9",
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
+          "content": "When I say \"e-learning,\" I'm talking about any learning that happens over a screen. This study aims to find the correlation between time spent e-learning and divergent thinking. If you looking to learn more about these topics or you wanna find out how to make something like this for yourself, I'll be providing an explanation at the end of this survey.",
+          "title": "What is this survey about?"
+        },
+        {
+          "required": true,
+          "type": "text",
+          "content": "As you fill in these next few questions, there won't be a \"go back\" button, so try to be as accurate as possible. ",
+          "title": ""
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "Let's go →",
+      "submitButtonPosition": "right",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Explanation"
+    },
+    "10": {
+      "id": "10",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "7",
+        "9"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Introduction"
+    },
+    "11": {
+      "id": "11",
+      "type": "lab.canvas.Screen",
+      "content": [
+        {
+          "type": "i-text",
+          "version": "4.3.1",
+          "originX": "center",
+          "originY": "center",
+          "left": 0,
+          "top": 0,
+          "width": 18.69,
+          "height": 36.16,
+          "fill": "black",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "round",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 1,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "text": "+",
+          "fontSize": 32,
+          "fontWeight": "normal",
+          "fontFamily": "sans-serif",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textAlign": "center",
+          "textBackgroundColor": "",
+          "charSpacing": 0,
+          "id": "11",
+          "styles": {}
+        }
+      ],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Fixation cross",
+      "_tab": "Content",
+      "timeout": "2000"
+    },
+    "13": {
+      "id": "13",
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
+          "title": "Part 3: E-learning time",
+          "content": "I hope you enjoyed that! Now let's move on to the part where we talk about the time you spend for learning online or on a screen."
+        },
+        {
+          "required": true,
+          "type": "radio",
+          "label": "In the past week, on average, approximately how much time PER DAY have you spent actively using a screen?",
+          "options": [
+            {
+              "label": "Less than 60 minutes per day",
+              "coding": "1"
+            },
+            {
+              "label": "1–2 hours per day",
+              "coding": "2"
+            },
+            {
+              "label": "2–3 hours per day",
+              "coding": "3"
+            },
+            {
+              "label": "3–4 hours per day",
+              "coding": "4"
+            },
+            {
+              "label": "4–5 hours per day",
+              "coding": "5"
+            },
+            {
+              "label": "More than 5 hours per day",
+              "coding": "6"
+            }
+          ],
+          "name": "screen-time"
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "Continue →",
+      "submitButtonPosition": "right",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Introduction"
+    },
+    "15": {
+      "id": "15",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "13",
+        "6"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Time"
+    },
+    "16": {
+      "id": "16",
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "required": true,
+          "type": "radio",
+          "label": "In the past week, on average, approximately how much time PER DAY have you spent actively learning online or on a screen?",
+          "options": [
+            {
+              "label": "Less than 60 minutes per day",
+              "coding": "1"
+            },
+            {
+              "label": "1–2 hours per day",
+              "coding": "2"
+            },
+            {
+              "label": "2–3 hours per day",
+              "coding": "3"
+            },
+            {
+              "label": "3–4 hours per day",
+              "coding": "4"
+            },
+            {
+              "label": "4–5 hours per day",
+              "coding": "5"
+            },
+            {
+              "label": "More than 5 hours per day",
+              "coding": "6"
+            }
+          ],
+          "name": "e-learning-time"
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "Continue →",
+      "submitButtonPosition": "right",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Page"
+    },
+    "18": {
+      "id": "18",
+      "type": "lab.html.Screen",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "studytime",
+          "message": "run",
+          "code": "new StudyTime({\r\n  target: document.getElementById(\"study-time\"),\r\n  props: {\r\n    name: \"study-time\"\r\n  }\r\n});"
+        }
+      ],
+      "title": "Study Time",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\r\n  <div class=\"w-l text-left\" style=\"display: block\">\r\n    <h2 class=\"text-center\">Your study schedule</h2>\r\n    <p class=\"text-center\">\r\n      What does a study schedule on an average day look like for you?\r\n    </p>\r\n    <p class=\"small text-muted hide-if-empty\" style=\"margin: 0.25rem 0\">\r\n      Highlight the hours that you typically use for studying below by dragging or tapping.\r\n    </p>\r\n    <form id=\"page-form\"></form>\r\n  </div>\r\n</main>\r\n\r\n<footer class=\"content-vertical-center content-horizontal-right\">\r\n\t<button type=\"submit\" form=\"page-form\">All good! &rarr;</button>\r\n</footer>",
+      "_tab": "Content"
+    },
+    "20": {
+      "id": "20",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "21",
+        "2"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Divergent Thinking"
+    },
+    "21": {
+      "id": "21",
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
+          "title": "Part 2: The Creativity Test",
+          "content": "Thank you for filling that out. For this next part, you'll play a game where you'll be prompted with the names of a few common items. Your goal will be to write as many possible alternative or unusual uses for that item as you can in two minutes, then select the best of your ideas. Try to be as creative as possible. "
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "I'm ready, let's go →",
+      "submitButtonPosition": "right",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Introduction"
+    },
+    "root": {
+      "id": "root",
+      "title": "root",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "10",
+        "3",
+        "18",
+        "20",
+        "15",
+        "16"
+      ],
+      "plugins": [
+        {
+          "type": "lab.plugins.Metadata"
+        }
+      ],
+      "metadata": {
+        "title": "Divergent Thinking and E-Learning",
+        "description": "",
+        "repository": "",
+        "contributors": "Felix Henninger <mailbox@felixhenninger.com> (http://felixhenninger.com)"
+      },
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "files": [],
+      "messageHandlers": []
+    }
+  },
+  "version": [
+    20,
+    2,
+    2
+  ],
+  "files": {
+    "files": {
+      "index.html": {
+        "content": "data:text/html,%3C!doctype%20html%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%3Ctitle%3EExperiment%3C%2Ftitle%3E%0A%20%20%3C!--%20lab.js%20library%20and%20experiment%20code%20--%3E%0A%20%20%24%7B%20header%20%7D%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Ftom-select%401.4.3%2Fdist%2Fcss%2Ftom-select.min.css%22%3E%0A%20%20%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Ftom-select%401.4.3%2Fdist%2Fjs%2Ftom-select.complete.min.js%22%3E%3C%2Fscript%3E%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22static%2Fbundle.css%22%20%2F%3E%0A%20%20%3Cscript%20defer%20src%3D%22static%2Fbundle.js%22%3E%3C%2Fscript%3E%0A%20%20%3Clink%20href%3D%22https%3A%2F%2Fapi.fontshare.com%2Fcss%3Ff%5B%5D%3Dbespoke-sans%40400%2C401%2C700%26f%5B%5D%3Dbespoke-slab%40700%26display%3Dswap%22%20rel%3D%22stylesheet%22%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3C!--%20If%20you'd%20rather%20have%20a%20container%20with%20a%20fixed%20width%0A%20%20%20%20%20%20%20and%20variable%20height%2C%20try%20removing%20the%20fullscreen%20class%20below%20--%3E%0A%20%20%3Cdiv%20class%3D%22container%20fullscreen%22%20data-labjs-section%3D%22main%22%3E%0A%20%20%20%20%3Cmain%20class%3D%22content-vertical-center%20content-horizontal-center%22%3E%0A%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%3Ch2%3ELoading...%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EThe%20study%20is%20loading%20and%20should%20start%20in%20a%20few%20seconds%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fmain%3E%0A%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A",
+        "source": "library"
+      },
+      "style.css": {
+        "content": "data:text/css,%2F*%20Please%20define%20your%20custom%20styles%20here%20*%2F%0A%0A%3Aroot%20%7B%0A%20%20--font-family%3A%20'Bespoke%20Sans'%2C%20sans-serif%3B%0A%20%20--font-family-mono%3A%20Droid%20Mono%2C%20Menlo%2C%20Consolas%2C%20monospace%3B%0A%7D%0A%0A*%20%7B%0A%20%20font-family%3A%20inherit%3B%0A%7D%0A%0Ah1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%20%7B%0A%20%20font-family%3A%20'Bespoke%20Slab'%2C%20sans-serif%3B%0A%20%20font-weight%3A%2070%3B%0A%7D%0A%0Ainput%5Btype%3D%22range%22%5D%20%7B%0A%20%20border%3A%20none%3B%0A%7D%0A%0A.optgroup-header%20%7B%0A%20%20font-size%3A%200.9em%3B%0A%20%20opacity%3A%200.8%3B%0A%20%20font-weight%3A%20700%3B%0A%7D",
+        "source": "library"
+      },
+      "static/bundle.js": {
+        "content": "data:text/javascript;base64,dmFyIGFwcD1mdW5jdGlvbigpeyJ1c2Ugc3RyaWN0IjtmdW5jdGlvbiBlKCl7fWZ1bmN0aW9uIHQoZSl7cmV0dXJuIGUoKX1mdW5jdGlvbiBuKCl7cmV0dXJuIE9iamVjdC5jcmVhdGUobnVsbCl9ZnVuY3Rpb24gbChlKXtlLmZvckVhY2godCl9ZnVuY3Rpb24gYShlKXtyZXR1cm4iZnVuY3Rpb24iPT10eXBlb2YgZX1mdW5jdGlvbiBjKGUsdCl7cmV0dXJuIGUhPWU/dD09dDplIT09dHx8ZSYmIm9iamVjdCI9PXR5cGVvZiBlfHwiZnVuY3Rpb24iPT10eXBlb2YgZX1mdW5jdGlvbiBzKGUsdCl7ZS5hcHBlbmRDaGlsZCh0KX1mdW5jdGlvbiB1KGUsdCxuKXtlLmluc2VydEJlZm9yZSh0LG58fG51bGwpfWZ1bmN0aW9uIHIoZSl7ZS5wYXJlbnROb2RlLnJlbW92ZUNoaWxkKGUpfWZ1bmN0aW9uIG8oZSx0KXtmb3IobGV0IG49MDtuPGUubGVuZ3RoO24rPTEpZVtuXSYmZVtuXS5kKHQpfWZ1bmN0aW9uIGkoZSl7cmV0dXJuIGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoZSl9ZnVuY3Rpb24gZChlKXtyZXR1cm4gZG9jdW1lbnQuY3JlYXRlVGV4dE5vZGUoZSl9ZnVuY3Rpb24gZigpe3JldHVybiBkKCIgIil9ZnVuY3Rpb24gaChlLHQsbixsKXtyZXR1cm4gZS5hZGRFdmVudExpc3RlbmVyKHQsbixsKSwoKT0+ZS5yZW1vdmVFdmVudExpc3RlbmVyKHQsbixsKX1mdW5jdGlvbiBwKGUsdCxuKXtudWxsPT1uP2UucmVtb3ZlQXR0cmlidXRlKHQpOmUuZ2V0QXR0cmlidXRlKHQpIT09biYmZS5zZXRBdHRyaWJ1dGUodCxuKX1mdW5jdGlvbiBtKGUsdCl7dD0iIit0LGUud2hvbGVUZXh0IT09dCYmKGUuZGF0YT10KX1mdW5jdGlvbiB2KGUsdCl7ZS52YWx1ZT1udWxsPT10PyIiOnR9ZnVuY3Rpb24gYihlLHQsbil7ZS5jbGFzc0xpc3Rbbj8iYWRkIjoicmVtb3ZlIl0odCl9bGV0IGc7ZnVuY3Rpb24gJChlKXtnPWV9Y29uc3QgeT1bXSx4PVtdLHc9W10sXz1bXSxrPVByb21pc2UucmVzb2x2ZSgpO2xldCBBPSExO2Z1bmN0aW9uIE0oKXtBfHwoQT0hMCxrLnRoZW4oRSkpfWZ1bmN0aW9uIFAoZSl7dy5wdXNoKGUpfWZ1bmN0aW9uIGooZSl7Xy5wdXNoKGUpfWxldCBOPSExO2NvbnN0IHE9bmV3IFNldDtmdW5jdGlvbiBFKCl7aWYoIU4pe049ITA7ZG97Zm9yKGxldCBlPTA7ZTx5Lmxlbmd0aDtlKz0xKXtjb25zdCB0PXlbZV07JCh0KSxDKHQuJCQpfWZvcigkKG51bGwpLHkubGVuZ3RoPTA7eC5sZW5ndGg7KXgucG9wKCkoKTtmb3IobGV0IGU9MDtlPHcubGVuZ3RoO2UrPTEpe2NvbnN0IHQ9d1tlXTtxLmhhcyh0KXx8KHEuYWRkKHQpLHQoKSl9dy5sZW5ndGg9MH13aGlsZSh5Lmxlbmd0aCk7Zm9yKDtfLmxlbmd0aDspXy5wb3AoKSgpO0E9ITEsTj0hMSxxLmNsZWFyKCl9fWZ1bmN0aW9uIEMoZSl7aWYobnVsbCE9PWUuZnJhZ21lbnQpe2UudXBkYXRlKCksbChlLmJlZm9yZV91cGRhdGUpO2NvbnN0IHQ9ZS5kaXJ0eTtlLmRpcnR5PVstMV0sZS5mcmFnbWVudCYmZS5mcmFnbWVudC5wKGUuY3R4LHQpLGUuYWZ0ZXJfdXBkYXRlLmZvckVhY2goUCl9fWNvbnN0IE89bmV3IFNldDtsZXQgTDtmdW5jdGlvbiBTKGUsdCl7ZSYmZS5pJiYoTy5kZWxldGUoZSksZS5pKHQpKX1mdW5jdGlvbiBUKGUsdCxuLGwpe2lmKGUmJmUubyl7aWYoTy5oYXMoZSkpcmV0dXJuO08uYWRkKGUpLEwuYy5wdXNoKCgoKT0+e08uZGVsZXRlKGUpLGwmJihuJiZlLmQoMSksbCgpKX0pKSxlLm8odCl9fWZ1bmN0aW9uIEIoZSx0LG4pe2NvbnN0IGw9ZS4kJC5wcm9wc1t0XTt2b2lkIDAhPT1sJiYoZS4kJC5ib3VuZFtsXT1uLG4oZS4kJC5jdHhbbF0pKX1mdW5jdGlvbiBEKGUsbixjLHMpe2NvbnN0e2ZyYWdtZW50OnUsb25fbW91bnQ6cixvbl9kZXN0cm95Om8sYWZ0ZXJfdXBkYXRlOml9PWUuJCQ7dSYmdS5tKG4sYyksc3x8UCgoKCk9Pntjb25zdCBuPXIubWFwKHQpLmZpbHRlcihhKTtvP28ucHVzaCguLi5uKTpsKG4pLGUuJCQub25fbW91bnQ9W119KSksaS5mb3JFYWNoKFApfWZ1bmN0aW9uIEgoZSx0KXtjb25zdCBuPWUuJCQ7bnVsbCE9PW4uZnJhZ21lbnQmJihsKG4ub25fZGVzdHJveSksbi5mcmFnbWVudCYmbi5mcmFnbWVudC5kKHQpLG4ub25fZGVzdHJveT1uLmZyYWdtZW50PW51bGwsbi5jdHg9W10pfWZ1bmN0aW9uIFIodCxhLGMscyx1LG8saT1bLTFdKXtjb25zdCBkPWc7JCh0KTtjb25zdCBmPXQuJCQ9e2ZyYWdtZW50Om51bGwsY3R4Om51bGwscHJvcHM6byx1cGRhdGU6ZSxub3RfZXF1YWw6dSxib3VuZDpuKCksb25fbW91bnQ6W10sb25fZGVzdHJveTpbXSxvbl9kaXNjb25uZWN0OltdLGJlZm9yZV91cGRhdGU6W10sYWZ0ZXJfdXBkYXRlOltdLGNvbnRleHQ6bmV3IE1hcChkP2QuJCQuY29udGV4dDpbXSksY2FsbGJhY2tzOm4oKSxkaXJ0eTppLHNraXBfYm91bmQ6ITF9O2xldCBoPSExO2lmKGYuY3R4PWM/Yyh0LGEucHJvcHN8fHt9LCgoZSxuLC4uLmwpPT57Y29uc3QgYT1sLmxlbmd0aD9sWzBdOm47cmV0dXJuIGYuY3R4JiZ1KGYuY3R4W2VdLGYuY3R4W2VdPWEpJiYoIWYuc2tpcF9ib3VuZCYmZi5ib3VuZFtlXSYmZi5ib3VuZFtlXShhKSxoJiZmdW5jdGlvbihlLHQpey0xPT09ZS4kJC5kaXJ0eVswXSYmKHkucHVzaChlKSxNKCksZS4kJC5kaXJ0eS5maWxsKDApKSxlLiQkLmRpcnR5W3QvMzF8MF18PTE8PHQlMzF9KHQsZSkpLG59KSk6W10sZi51cGRhdGUoKSxoPSEwLGwoZi5iZWZvcmVfdXBkYXRlKSxmLmZyYWdtZW50PSEhcyYmcyhmLmN0eCksYS50YXJnZXQpe2lmKGEuaHlkcmF0ZSl7Y29uc3QgZT1mdW5jdGlvbihlKXtyZXR1cm4gQXJyYXkuZnJvbShlLmNoaWxkTm9kZXMpfShhLnRhcmdldCk7Zi5mcmFnbWVudCYmZi5mcmFnbWVudC5sKGUpLGUuZm9yRWFjaChyKX1lbHNlIGYuZnJhZ21lbnQmJmYuZnJhZ21lbnQuYygpO2EuaW50cm8mJlModC4kJC5mcmFnbWVudCksRCh0LGEudGFyZ2V0LGEuYW5jaG9yLGEuY3VzdG9tRWxlbWVudCksRSgpfSQoZCl9Y2xhc3MgenskZGVzdHJveSgpe0godGhpcywxKSx0aGlzLiRkZXN0cm95PWV9JG9uKGUsdCl7Y29uc3Qgbj10aGlzLiQkLmNhbGxiYWNrc1tlXXx8KHRoaXMuJCQuY2FsbGJhY2tzW2VdPVtdKTtyZXR1cm4gbi5wdXNoKHQpLCgpPT57Y29uc3QgZT1uLmluZGV4T2YodCk7LTEhPT1lJiZuLnNwbGljZShlLDEpfX0kc2V0KGUpe3ZhciB0O3RoaXMuJCRzZXQmJih0PWUsMCE9PU9iamVjdC5rZXlzKHQpLmxlbmd0aCkmJih0aGlzLiQkLnNraXBfYm91bmQ9ITAsdGhpcy4kJHNldChlKSx0aGlzLiQkLnNraXBfYm91bmQ9ITEpfX1mdW5jdGlvbiBGKHQpe2xldCBuLGEsYyxvLGQsZixtLGI7cmV0dXJue2MoKXtuPWkoInRyIiksYT1pKCJ0ZCIpLGM9aSgidGV4dGFyZWEiKSxkPWkoInRkIiksZj1pKCJidXR0b24iKSxmLnRleHRDb250ZW50PSJEZWxldGUiLHAoYywiY2xhc3MiLCJ3LTEwMCIpLHAoYywibmFtZSIsbz10WzNdKyItYW5zd2VyLSIrdFsyXSkscChjLCJyb3dzIiwiMSIpLHAoZiwidHlwZSIsImJ1dHRvbiIpLHAoZCwiY2xhc3MiLCJ0ZXh0LXJpZ2h0Iil9LG0oZSxsKXt1KGUsbixsKSxzKG4sYSkscyhhLGMpLHYoYyx0WzBdKSx0WzhdKGMpLHMobixkKSxzKGQsZiksbXx8KGI9W2goYywiaW5wdXQiLHRbN10pLGgoYywia2V5cHJlc3MiLHRbNV0pLGgoZiwiY2xpY2siLHRbOV0pXSxtPSEwKX0scChlLFt0XSl7MTImdCYmbyE9PShvPWVbM10rIi1hbnN3ZXItIitlWzJdKSYmcChjLCJuYW1lIixvKSwxJnQmJnYoYyxlWzBdKX0saTplLG86ZSxkKGUpe2UmJnIobiksdFs4XShudWxsKSxtPSExLGwoYil9fX1mdW5jdGlvbiBHKGUsdCxuKXtsZXR7a2V5Omx9PXQse3ZhbHVlOmF9PXQse3BhcmVudE5hbWU6Y309dCx7Y3JlYXRlQW5zd2VyOnN9PXQse2RlbGV0ZUFuc3dlcjp1fT10O2xldHt0ZXh0YXJlYTpyfT10O3JldHVybiBlLiQkc2V0PWU9Pnsia2V5ImluIGUmJm4oMixsPWUua2V5KSwidmFsdWUiaW4gZSYmbigwLGE9ZS52YWx1ZSksInBhcmVudE5hbWUiaW4gZSYmbigzLGM9ZS5wYXJlbnROYW1lKSwiY3JlYXRlQW5zd2VyImluIGUmJm4oNixzPWUuY3JlYXRlQW5zd2VyKSwiZGVsZXRlQW5zd2VyImluIGUmJm4oNCx1PWUuZGVsZXRlQW5zd2VyKSwidGV4dGFyZWEiaW4gZSYmbigxLHI9ZS50ZXh0YXJlYSl9LFthLHIsbCxjLHUsZT0+e2lmKDEzPT09KGUua2V5Q29kZXx8ZS53aGljaCkpcmV0dXJuIHMobCksZS5wcmV2ZW50RGVmYXVsdCgpLCExfSxzLGZ1bmN0aW9uKCl7YT10aGlzLnZhbHVlLG4oMCxhKX0sZnVuY3Rpb24oZSl7eFtlPyJ1bnNoaWZ0IjoicHVzaCJdKCgoKT0+e3I9ZSxuKDEscil9KSl9LCgpPT51KGwpXX1jbGFzcyBJIGV4dGVuZHMgentjb25zdHJ1Y3RvcihlKXtzdXBlcigpLFIodGhpcyxlLEcsRixjLHtrZXk6Mix2YWx1ZTowLHBhcmVudE5hbWU6MyxjcmVhdGVBbnN3ZXI6NixkZWxldGVBbnN3ZXI6NCx0ZXh0YXJlYToxfSl9fWZ1bmN0aW9uIEooZSx0LG4pe2NvbnN0IGw9ZS5zbGljZSgpO3JldHVybiBsWzldPXRbbl0sbFsxMF09dCxsWzExXT1uLGx9ZnVuY3Rpb24gSyhlKXtsZXQgdCxuLGwsYTtmdW5jdGlvbiBjKHQpe2VbNl0odCxlWzExXSl9ZnVuY3Rpb24gcyh0KXtlWzddKHQsZVsxMV0pfWxldCB1PXtrZXk6ZVsxMV0scGFyZW50TmFtZTplWzBdLGNyZWF0ZUFuc3dlcjplWzNdLGRlbGV0ZUFuc3dlcjplWzRdfTtyZXR1cm4gdm9pZCAwIT09ZVsyXVtlWzExXV0mJih1LnRleHRhcmVhPWVbMl1bZVsxMV1dKSx2b2lkIDAhPT1lWzFdW2VbMTFdXS52YWx1ZSYmKHUudmFsdWU9ZVsxXVtlWzExXV0udmFsdWUpLHQ9bmV3IEkoe3Byb3BzOnV9KSx4LnB1c2goKCgpPT5CKHQsInRleHRhcmVhIixjKSkpLHgucHVzaCgoKCk9PkIodCwidmFsdWUiLHMpKSkse2MoKXt2YXIgZTsoZT10LiQkLmZyYWdtZW50KSYmZS5jKCl9LG0oZSxuKXtEKHQsZSxuKSxhPSEwfSxwKGEsYyl7ZT1hO2NvbnN0IHM9e307MSZjJiYocy5wYXJlbnROYW1lPWVbMF0pLCFuJiY0JmMmJihuPSEwLHMudGV4dGFyZWE9ZVsyXVtlWzExXV0saigoKCk9Pm49ITEpKSksIWwmJjImYyYmKGw9ITAscy52YWx1ZT1lWzFdW2VbMTFdXS52YWx1ZSxqKCgoKT0+bD0hMSkpKSx0LiRzZXQocyl9LGkoZSl7YXx8KFModC4kJC5mcmFnbWVudCxlKSxhPSEwKX0sbyhlKXtUKHQuJCQuZnJhZ21lbnQsZSksYT0hMX0sZChlKXtIKHQsZSl9fX1mdW5jdGlvbiBRKGUpe2xldCB0LG4sYSxjLGQsbSx2LGIsZywkLHkseD1lWzFdLHc9W107Zm9yKGxldCB0PTA7dDx4Lmxlbmd0aDt0Kz0xKXdbdF09SyhKKGUseCx0KSk7Y29uc3QgXz1lPT5UKHdbZV0sMSwxLCgoKT0+e3dbZV09bnVsbH0pKTtyZXR1cm57Yygpe3Q9aSgidGFibGUiKSxuPWkoInRib2R5Iik7Zm9yKGxldCBlPTA7ZTx3Lmxlbmd0aDtlKz0xKXdbZV0uYygpO2E9ZigpLGM9aSgidHIiKSxkPWkoInRkIiksbT1pKCJidXR0b24iKSxtLnRleHRDb250ZW50PSIrIix2PWYoKSxiPWkoImNvbGdyb3VwIiksYi5pbm5lckhUTUw9Jzxjb2wgc3R5bGU9IndpZHRoOiA4MCUiLz4gXG5cdFx0PGNvbCBzdHlsZT0id2lkdGg6IDIwJSIvPicscChtLCJ0eXBlIiwiYnV0dG9uIikscChtLCJjbGFzcyIsInctMTAwIikscChkLCJjb2xzcGFuIiwiMyIpfSxtKGwscil7dShsLHQscikscyh0LG4pO2ZvcihsZXQgZT0wO2U8dy5sZW5ndGg7ZSs9MSl3W2VdLm0obixudWxsKTtzKG4sYSkscyhuLGMpLHMoYyxkKSxzKGQsbSkscyh0LHYpLHModCxiKSxnPSEwLCR8fCh5PWgobSwiY2xpY2siLGVbOF0pLCQ9ITApfSxwKGUsW3RdKXtpZigzMSZ0KXtsZXQgYztmb3IoeD1lWzFdLGM9MDtjPHgubGVuZ3RoO2MrPTEpe2NvbnN0IGw9SihlLHgsYyk7d1tjXT8od1tjXS5wKGwsdCksUyh3W2NdLDEpKTood1tjXT1LKGwpLHdbY10uYygpLFMod1tjXSwxKSx3W2NdLm0obixhKSl9Zm9yKEw9e3I6MCxjOltdLHA6TH0sYz14Lmxlbmd0aDtjPHcubGVuZ3RoO2MrPTEpXyhjKTtMLnJ8fGwoTC5jKSxMPUwucH19LGkoZSl7aWYoIWcpe2ZvcihsZXQgZT0wO2U8eC5sZW5ndGg7ZSs9MSlTKHdbZV0pO2c9ITB9fSxvKGUpe3c9dy5maWx0ZXIoQm9vbGVhbik7Zm9yKGxldCBlPTA7ZTx3Lmxlbmd0aDtlKz0xKVQod1tlXSk7Zz0hMX0sZChlKXtlJiZyKHQpLG8odyxlKSwkPSExLHkoKX19fWZ1bmN0aW9uIFUoZSx0LG4pe2xldHtuYW1lOmw9IiJ9PXQse2xhYmpzOmF9PXQsYz1be3ZhbHVlOiIiLGlkOjB9XSxzPVtdO2FzeW5jIGZ1bmN0aW9uIHUoZSl7Yy5sZW5ndGg8PWUrMSYmKG4oMSxjPVsuLi5jLHt2YWx1ZToiIixpZDpjLmxlbmd0aH1dKSxhd2FpdChNKCksaykpLHNbZSsxXS5mb2N1cygpfXJldHVybiBlLiQkc2V0PWU9PnsibmFtZSJpbiBlJiZuKDAsbD1lLm5hbWUpLCJsYWJqcyJpbiBlJiZuKDUsYT1lLmxhYmpzKX0sZS4kJC51cGRhdGU9KCk9PnszNSZlLiQkLmRpcnR5JiYicGFyYW1ldGVycyJpbiBhJiZuKDUsYS5wYXJhbWV0ZXJzW2wrIi1hbnN3ZXJzIl09YyxhKX0sW2wsYyxzLHUsZnVuY3Rpb24oZSl7bigxLGM9Wy4uLmMuc2xpY2UoMCxlKSwuLi5jLnNsaWNlKGUrMSldKX0sYSxmdW5jdGlvbih0LGwpe2UuJCQubm90X2VxdWFsKHNbbF0sdCkmJihzW2xdPXQsbigyLHMpKX0sZnVuY3Rpb24odCxsKXtlLiQkLm5vdF9lcXVhbChjW2xdLnZhbHVlLHQpJiYoY1tsXS52YWx1ZT10LG4oMSxjKSl9LCgpPT51KGMubGVuZ3RoLTEpXX1mdW5jdGlvbiBWKGUsdCxuKXtjb25zdCBsPWUuc2xpY2UoKTtyZXR1cm4gbFs2XT10W25dLGxbN109dCxsWzhdPW4sbH1mdW5jdGlvbiBXKGUpe2xldCB0LG4sbCxhLGMsbyx2LGcsJCx5LHgsdyxfLGssQSxNLFA9ZVs2XS52YWx1ZSsiIjtmdW5jdGlvbiBqKCl7ZVs0XS5jYWxsKG8sZVs3XSxlWzhdKX1yZXR1cm57Yygpe3Q9aSgidHIiKSxuPWkoInRkIiksbD1pKCJsYWJlbCIpLGE9aSgiZGl2IiksYz1pKCJkaXYiKSxvPWkoImlucHV0IikseT1mKCkseD1pKCJzcGFuIiksdz1kKFApLGs9ZigpLHAobywiaWQiLHY9ZVsxXSsiLSIrZVs4XSkscChvLCJ0eXBlIiwiY2hlY2tib3giKSxvLl9fdmFsdWU9Zz1lWzZdLmlkLG8udmFsdWU9by5fX3ZhbHVlLG8uZGlzYWJsZWQ9JD1lWzJdLmxlbmd0aD49MiYmIWVbNl0uc2VsZWN0ZWQsZVs1XVswXS5wdXNoKG8pLHAoYywiY2xhc3MiLCJjaGVjay13cmFwIHN2ZWx0ZS0xMmR4bXU2IikscCh4LCJjbGFzcyIsInN2ZWx0ZS0xMmR4bXU2IiksYih4LCJ0ZXh0LW11dGVkIixlWzJdLmxlbmd0aD49MiYmIWVbNl0uc2VsZWN0ZWQpLHAoYSwiY2xhc3MiLCJpdGVtIHN2ZWx0ZS0xMmR4bXU2IiksYihhLCJzZWxlY3RlZCIsZVs2XS5zZWxlY3RlZCkscChsLCJmb3IiLF89ZVsxXSsiLSIrZVs4XSl9LG0ocixpKXt1KHIsdCxpKSxzKHQsbikscyhuLGwpLHMobCxhKSxzKGEsYykscyhjLG8pLG8uY2hlY2tlZD1lWzZdLnNlbGVjdGVkLG8uY2hlY2tlZD1+ZVsyXS5pbmRleE9mKG8uX192YWx1ZSkscyhhLHkpLHMoYSx4KSxzKHgsdykscyh0LGspLEF8fChNPWgobywiY2hhbmdlIixqKSxBPSEwKX0scCh0LG4pe2U9dCwyJm4mJnYhPT0odj1lWzFdKyItIitlWzhdKSYmcChvLCJpZCIsdiksMSZuJiZnIT09KGc9ZVs2XS5pZCkmJihvLl9fdmFsdWU9ZyxvLnZhbHVlPW8uX192YWx1ZSksNSZuJiYkIT09KCQ9ZVsyXS5sZW5ndGg+PTImJiFlWzZdLnNlbGVjdGVkKSYmKG8uZGlzYWJsZWQ9JCksMSZuJiYoby5jaGVja2VkPWVbNl0uc2VsZWN0ZWQpLDQmbiYmKG8uY2hlY2tlZD1+ZVsyXS5pbmRleE9mKG8uX192YWx1ZSkpLDEmbiYmUCE9PShQPWVbNl0udmFsdWUrIiIpJiZtKHcsUCksNSZuJiZiKHgsInRleHQtbXV0ZWQiLGVbMl0ubGVuZ3RoPj0yJiYhZVs2XS5zZWxlY3RlZCksMSZuJiZiKGEsInNlbGVjdGVkIixlWzZdLnNlbGVjdGVkKSwyJm4mJl8hPT0oXz1lWzFdKyItIitlWzhdKSYmcChsLCJmb3IiLF8pfSxkKG4pe24mJnIodCksZVs1XVswXS5zcGxpY2UoZVs1XVswXS5pbmRleE9mKG8pLDEpLEE9ITEsTSgpfX19ZnVuY3Rpb24gWCh0KXtsZXQgbixsLGEsYyxkPXRbMF0saD1bXTtmb3IobGV0IGU9MDtlPGQubGVuZ3RoO2UrPTEpaFtlXT1XKFYodCxkLGUpKTtyZXR1cm57Yygpe249aSgidGFibGUiKSxsPWkoInRib2R5Iik7Zm9yKGxldCBlPTA7ZTxoLmxlbmd0aDtlKz0xKWhbZV0uYygpO2E9ZigpLGM9aSgic21hbGwiKSxjLnRleHRDb250ZW50PSIyIGl0ZW1zIG1heCIscChuLCJjbGFzcyIsInRhYmxlLXBsYWluIikscChjLCJjbGFzcyIsInRleHQtbXV0ZWQiKSxiKGMsImludmlzaWJsZSIsdFsyXS5sZW5ndGg8Mil9LG0oZSx0KXt1KGUsbix0KSxzKG4sbCk7Zm9yKGxldCBlPTA7ZTxoLmxlbmd0aDtlKz0xKWhbZV0ubShsLG51bGwpO3UoZSxhLHQpLHUoZSxjLHQpfSxwKGUsW3RdKXtpZig3JnQpe2xldCBuO2ZvcihkPWVbMF0sbj0wO248ZC5sZW5ndGg7bis9MSl7Y29uc3QgYT1WKGUsZCxuKTtoW25dP2hbbl0ucChhLHQpOihoW25dPVcoYSksaFtuXS5jKCksaFtuXS5tKGwsbnVsbCkpfWZvcig7bjxoLmxlbmd0aDtuKz0xKWhbbl0uZCgxKTtoLmxlbmd0aD1kLmxlbmd0aH00JnQmJmIoYywiaW52aXNpYmxlIixlWzJdLmxlbmd0aDwyKX0saTplLG86ZSxkKGUpe2UmJnIobiksbyhoLGUpLGUmJnIoYSksZSYmcihjKX19fWZ1bmN0aW9uIFkoZSx0LG4pe2xldHtpdGVtczpsPVt7dmFsdWU6IkhhaXIgY2xpcCIsaWQ6MH1dfT10LHtuYW1lOmF9PXQse2xhYmpzOmN9PXQscz1bXTtjb25zdCB1PVtbXV07cmV0dXJuIGUuJCRzZXQ9ZT0+eyJpdGVtcyJpbiBlJiZuKDAsbD1lLml0ZW1zKSwibmFtZSJpbiBlJiZuKDEsYT1lLm5hbWUpLCJsYWJqcyJpbiBlJiZuKDMsYz1lLmxhYmpzKX0sZS4kJC51cGRhdGU9KCk9PnsxNCZlLiQkLmRpcnR5JiYicGFyYW1ldGVycyJpbiBjJiZuKDMsYy5wYXJhbWV0ZXJzW2ErIi1yYW5raW5nIl09cyxjKX0sW2wsYSxzLGMsZnVuY3Rpb24oZSx0KXtlW3RdLnNlbGVjdGVkPXRoaXMuY2hlY2tlZCxzPWZ1bmN0aW9uKGUsdCxuKXtjb25zdCBsPW5ldyBTZXQ7Zm9yKGxldCB0PTA7dDxlLmxlbmd0aDt0Kz0xKWVbdF0uY2hlY2tlZCYmbC5hZGQoZVt0XS5fX3ZhbHVlKTtyZXR1cm4gbnx8bC5kZWxldGUodCksQXJyYXkuZnJvbShsKX0odVswXSx0aGlzLl9fdmFsdWUsdGhpcy5jaGVja2VkKSxuKDAsbCksbigyLHMpfSx1XX1mdW5jdGlvbiBaKGUsdCxuKXtjb25zdCBsPWUuc2xpY2UoKTtyZXR1cm4gbFs5XT10W25dLGx9ZnVuY3Rpb24gZWUoZSl7bGV0IHQsbixhLGMsbyx2LGcsJCx5LHgsdz1lWzldLmxhYmVsKyIiO2Z1bmN0aW9uIF8oLi4udCl7cmV0dXJuIGVbNF0oZVs5XSwuLi50KX1mdW5jdGlvbiBrKC4uLnQpe3JldHVybiBlWzVdKGVbOV0sLi4udCl9cmV0dXJue2MoKXt0PWkoInRyIiksbj1pKCJ0ZCIpLGE9ZCh3KSxjPWkoInRkIiksbz1pKCJpbnB1dCIpLCQ9ZigpLHAobiwiY2xhc3MiLCJ0aW1lIHN2ZWx0ZS1leTJ0aHEiKSxvLmhpZGRlbj0hMCxwKG8sInR5cGUiLCJjaGVja2JveCIpLG8uY2hlY2tlZD12PWVbOV0uc2VsZWN0ZWQsby52YWx1ZT1nPWVbOV0udmFsdWUscChvLCJuYW1lIixlWzBdKSxwKGMsImNsYXNzIiwiaGlnaGxpZ2h0IHN2ZWx0ZS1leTJ0aHEiKSxwKHQsImNsYXNzIiwic3ZlbHRlLWV5MnRocSIpLGIodCwic2VsZWN0ZWQiLGVbOV0uc2VsZWN0ZWQpfSxtKGUsbCl7dShlLHQsbCkscyh0LG4pLHMobixhKSxzKHQsYykscyhjLG8pLHModCwkKSx5fHwoeD1baChjLCJtb3VzZWVudGVyIixfKSxoKGMsIm1vdXNlZG93biIsayldLHk9ITApfSxwKG4sbCl7ZT1uLDQmbCYmdyE9PSh3PWVbOV0ubGFiZWwrIiIpJiZtKGEsdyksNCZsJiZ2IT09KHY9ZVs5XS5zZWxlY3RlZCkmJihvLmNoZWNrZWQ9diksNCZsJiZnIT09KGc9ZVs5XS52YWx1ZSkmJihvLnZhbHVlPWcpLDEmbCYmcChvLCJuYW1lIixlWzBdKSw0JmwmJmIodCwic2VsZWN0ZWQiLGVbOV0uc2VsZWN0ZWQpfSxkKGUpe2UmJnIodCkseT0hMSxsKHgpfX19ZnVuY3Rpb24gdGUodCl7bGV0IG4sYSxjLGQsZj10WzJdLG09W107Zm9yKGxldCBlPTA7ZTxmLmxlbmd0aDtlKz0xKW1bZV09ZWUoWih0LGYsZSkpO3JldHVybntjKCl7bj1pKCJkaXYiKSxhPWkoInRhYmxlIik7Zm9yKGxldCBlPTA7ZTxtLmxlbmd0aDtlKz0xKW1bZV0uYygpO3AoYSwiY2xhc3MiLCJ0YWJsZS1wbGFpbiBzdmVsdGUtZXkydGhxIikscChuLCJjbGFzcyIsInN2ZWx0ZS1leTJ0aHEiKX0sbShlLGwpe3UoZSxuLGwpLHMobixhKTtmb3IobGV0IGU9MDtlPG0ubGVuZ3RoO2UrPTEpbVtlXS5tKGEsbnVsbCk7Y3x8KGQ9W2gobiwibW91c2Vkb3duIix0WzZdLCEwKSxoKG4sIm1vdXNldXAiLHRbN10sITApLGgobiwibW91c2VsZWF2ZSIsdFs4XSldLGM9ITApfSxwKGUsW3RdKXtpZigxMyZ0KXtsZXQgbjtmb3IoZj1lWzJdLG49MDtuPGYubGVuZ3RoO24rPTEpe2NvbnN0IGw9WihlLGYsbik7bVtuXT9tW25dLnAobCx0KToobVtuXT1lZShsKSxtW25dLmMoKSxtW25dLm0oYSxudWxsKSl9Zm9yKDtuPG0ubGVuZ3RoO24rPTEpbVtuXS5kKDEpO20ubGVuZ3RoPWYubGVuZ3RofX0saTplLG86ZSxkKGUpe2UmJnIobiksbyhtLGUpLGM9ITEsbChkKX19fWZ1bmN0aW9uIG5lKGUsdCxuKXtsZXR7bmFtZTpsfT10LGE9IiIsYz1be2xhYmVsOiIxMjowMCBBTSIsdmFsdWU6MCxzZWxlY3RlZDohMX0se2xhYmVsOiIxOjAwIEFNIix2YWx1ZToxLHNlbGVjdGVkOiExfSx7bGFiZWw6IjI6MDAgQU0iLHZhbHVlOjIsc2VsZWN0ZWQ6ITF9LHtsYWJlbDoiMzowMCBBTSIsdmFsdWU6MyxzZWxlY3RlZDohMX0se2xhYmVsOiI0OjAwIEFNIix2YWx1ZTo0LHNlbGVjdGVkOiExfSx7bGFiZWw6IjU6MDAgQU0iLHZhbHVlOjUsc2VsZWN0ZWQ6ITF9LHtsYWJlbDoiNjowMCBBTSIsdmFsdWU6NixzZWxlY3RlZDohMX0se2xhYmVsOiI3OjAwIEFNIix2YWx1ZTo3LHNlbGVjdGVkOiExfSx7bGFiZWw6Ijg6MDAgQU0iLHZhbHVlOjgsc2VsZWN0ZWQ6ITF9LHtsYWJlbDoiOTowMCBBTSIsdmFsdWU6OSxzZWxlY3RlZDohMX0se2xhYmVsOiIxMDowMCBBTSIsdmFsdWU6MTAsc2VsZWN0ZWQ6ITF9LHtsYWJlbDoiMTE6MDAgQU0iLHZhbHVlOjExLHNlbGVjdGVkOiExfSx7bGFiZWw6IjEyOjAwIFBNIix2YWx1ZToxMixzZWxlY3RlZDohMX0se2xhYmVsOiIxOjAwIFBNIix2YWx1ZToxMyxzZWxlY3RlZDohMX0se2xhYmVsOiIyOjAwIFBNIix2YWx1ZToxNCxzZWxlY3RlZDohMX0se2xhYmVsOiIzOjAwIFBNIix2YWx1ZToxNSxzZWxlY3RlZDohMX0se2xhYmVsOiI0OjAwIFBNIix2YWx1ZToxNixzZWxlY3RlZDohMX0se2xhYmVsOiI1OjAwIFBNIix2YWx1ZToxNyxzZWxlY3RlZDohMX0se2xhYmVsOiI2OjAwIFBNIix2YWx1ZToxOCxzZWxlY3RlZDohMX0se2xhYmVsOiI3OjAwIFBNIix2YWx1ZToxOSxzZWxlY3RlZDohMX0se2xhYmVsOiI4OjAwIFBNIix2YWx1ZToyMCxzZWxlY3RlZDohMX0se2xhYmVsOiI5OjAwIFBNIix2YWx1ZToyMSxzZWxlY3RlZDohMX0se2xhYmVsOiIxMDowMCBQTSIsdmFsdWU6MjIsc2VsZWN0ZWQ6ITF9LHtsYWJlbDoiMTE6MDAgUE0iLHZhbHVlOjIzLHNlbGVjdGVkOiExfV07Y29uc3Qgcz1lPT57Y29uc29sZS5sb2coYSksImRvd24iPT1hJiYoZS5zZWxlY3RlZD0hZS5zZWxlY3RlZCksbigyLGMpfTtyZXR1cm4gZS4kJHNldD1lPT57Im5hbWUiaW4gZSYmbigwLGw9ZS5uYW1lKX0sW2wsYSxjLHMsKGUsdCk9PntzKGUpfSwoZSx0KT0+e3MoZSl9LGU9Pm4oMSxhPSJkb3duIiksZT0+bigxLGE9InVwIiksZT0+bigxLGE9Im91dCIpXX1yZXR1cm4gd2luZG93LkFuc3dlcnM9Y2xhc3MgZXh0ZW5kcyB6e2NvbnN0cnVjdG9yKGUpe3N1cGVyKCksUih0aGlzLGUsVSxRLGMse25hbWU6MCxsYWJqczo1fSl9fSx3aW5kb3cuUmFua2luZz1jbGFzcyBleHRlbmRzIHp7Y29uc3RydWN0b3IoZSl7c3VwZXIoKSxSKHRoaXMsZSxZLFgsYyx7aXRlbXM6MCxuYW1lOjEsbGFianM6M30pfX0sd2luZG93LlN0dWR5VGltZT1jbGFzcyBleHRlbmRzIHp7Y29uc3RydWN0b3IoZSl7c3VwZXIoKSxSKHRoaXMsZSxuZSx0ZSxjLHtuYW1lOjB9KX19LGFwcH0oKTsKLy8jIHNvdXJjZU1hcHBpbmdVUkw9YnVuZGxlLmpzLm1hcAo=",
+        "source": "embedded-global",
+        "checkSum": "ad43724cceaff090e949c7a7a86251c36821e049c78b9e4f62c950c8ee8c133f"
+      },
+      "static/bundle.css": {
+        "content": "data:text/css;base64,LnNlbGVjdGVkLnN2ZWx0ZS0xMmR4bXU2LnN2ZWx0ZS0xMmR4bXU2e2JhY2tncm91bmQ6I2Y4ZjhmODtiYWNrZ3JvdW5kOnZhcigtLWNvbG9yLWdyYXktYmFja2dyb3VuZCl9Lml0ZW0uc3ZlbHRlLTEyZHhtdTYuc3ZlbHRlLTEyZHhtdTZ7Ym9yZGVyLXJhZGl1czozcHg7Ym9yZGVyOjJweCBzb2xpZCAjZTVlNWU1O2JvcmRlcjoycHggc29saWQgdmFyKC0tY29sb3ItYm9yZGVyKTstd2Via2l0LXRvdWNoLWNhbGxvdXQ6bm9uZTstd2Via2l0LXVzZXItc2VsZWN0Om5vbmU7LW1zLXVzZXItc2VsZWN0Om5vbmU7dXNlci1zZWxlY3Q6bm9uZX0uaXRlbS5zdmVsdGUtMTJkeG11NiBzcGFuLnN2ZWx0ZS0xMmR4bXU2e3BhZGRpbmc6OHB4IDAgNnB4O2Rpc3BsYXk6aW5saW5lLWJsb2NrfS5jaGVjay13cmFwLnN2ZWx0ZS0xMmR4bXU2LnN2ZWx0ZS0xMmR4bXU2e2Rpc3BsYXk6aW5saW5lLWJsb2NrfXRhYmxlLnN2ZWx0ZS1leTJ0aHEuc3ZlbHRlLWV5MnRocXtib3JkZXItY29sbGFwc2U6Y29sbGFwc2V9dGQuaGlnaGxpZ2h0LnN2ZWx0ZS1leTJ0aHEuc3ZlbHRlLWV5MnRocXt3aWR0aDoxMDBweDtoZWlnaHQ6MzBweH10ZC50aW1lLnN2ZWx0ZS1leTJ0aHEuc3ZlbHRlLWV5MnRocXtmb250LXNpemU6MC44ZW07dGV4dC1hbGlnbjpyaWdodDtwYWRkaW5nLXJpZ2h0OjdweDtjb2xvcjojNzI3MjcyfXRyLnN2ZWx0ZS1leTJ0aHE6bm90KC5zZWxlY3RlZCkgLmhpZ2hsaWdodC5zdmVsdGUtZXkydGhxe2JvcmRlci1sZWZ0OjJweCBzb2xpZCAjZWNlY2VjfXRyLnN2ZWx0ZS1leTJ0aHE6bm90KC5zZWxlY3RlZCk6bm90KDpmaXJzdC1jaGlsZCkgLmhpZ2hsaWdodC5zdmVsdGUtZXkydGhxe2JvcmRlci10b3A6MnB4IHNvbGlkICNlY2VjZWN9dHIuc2VsZWN0ZWQuc3ZlbHRlLWV5MnRocSAuaGlnaGxpZ2h0LnN2ZWx0ZS1leTJ0aHF7YmFja2dyb3VuZC1jb2xvcjojZDZlYWY4O2JvcmRlci10b3A6MnB4IHNvbGlkICNkNmVhZjg7Ym9yZGVyLWxlZnQ6MnB4IHNvbGlkICMzNDk4ZGI7Ym9yZGVyLXJpZ2h0OjJweCBzb2xpZCAjMzQ5OGRifXRyLnN2ZWx0ZS1leTJ0aHE6bm90KC5zZWxlY3RlZCkrdHIuc2VsZWN0ZWQgdGQuaGlnaGxpZ2h0LnN2ZWx0ZS1leTJ0aHEsdHIuc2VsZWN0ZWQuc3ZlbHRlLWV5MnRocTpmaXJzdC1jaGlsZCB0ZC5oaWdobGlnaHQuc3ZlbHRlLWV5MnRocXtib3JkZXItdG9wOjJweCBzb2xpZCAjMzQ5OGRifXRyLnNlbGVjdGVkLnN2ZWx0ZS1leTJ0aHE6bGFzdC1jaGlsZCAuaGlnaGxpZ2h0LnN2ZWx0ZS1leTJ0aHF7Ym9yZGVyLWJvdHRvbToycHggc29saWQgIzM0OThkYn10ci5zZWxlY3RlZC5zdmVsdGUtZXkydGhxK3RyOm5vdCguc2VsZWN0ZWQpIHRkLmhpZ2hsaWdodC5zdmVsdGUtZXkydGhxe2JvcmRlci10b3A6MnB4IHNvbGlkICMzNDk4ZGJ9ZGl2LnN2ZWx0ZS1leTJ0aHEuc3ZlbHRlLWV5MnRocXtjb2x1bW4tY291bnQ6MjstbW96LWNvbHVtbi1jb3VudDoyOy13ZWJraXQtY29sdW1uLWNvdW50OjI7dG91Y2gtYWN0aW9uOm5vbmU7LXdlYmtpdC11c2VyLXNlbGVjdDpub25lOy13ZWJraXQtdG91Y2gtY2FsbG91dDpub25lOy1tb3otdXNlci1zZWxlY3Q6bm9uZTstbXMtdXNlci1zZWxlY3Q6bm9uZTt1c2VyLXNlbGVjdDpub25lfUBtZWRpYShtaW4td2lkdGg6IDc2OHB4KXtkaXYuc3ZlbHRlLWV5MnRocS5zdmVsdGUtZXkydGhxe2NvbHVtbi1jb3VudDozOy1tb3otY29sdW1uLWNvdW50OjM7LXdlYmtpdC1jb2x1bW4tY291bnQ6M319",
+        "source": "embedded-global",
+        "checkSum": "85a6ec030b99f06f379072980c8a5f5c5f150a66f2ef4a88104c8cec19777b67"
+      }
+    },
+    "bundledFiles": {
+      "lib/lab.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.css": {
+        "type": "text/css"
+      },
+      "lib/loading.svg": {
+        "type": "image/svg+xml"
+      },
+      "lib/lab.fallback.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js.map": {
+        "type": "text/plain"
+      }
+    }
+  }
+}
